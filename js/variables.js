@@ -99,3 +99,4 @@ if (hora < 12) { //Si es verdadera ejecuta el codigo del bloque
 } else { // Si todas las anteriores fueron falsas, ejecuta el codigo del bloque
     console.log("Buenas noches");
 }
+
