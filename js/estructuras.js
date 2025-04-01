@@ -310,6 +310,24 @@ if (hora < 12) { //Si es verdadera ejecuta el codigo del bloque
     console.log("Buenas noches");
 }
 
+/**
+ * OPERADOR TERNARIO
+ * condición ? valor_si_true : valor_si_false;
+ * Cuándo usar if-else y cuándo usar el operador ternario
+if-else es más adecuado cuando:
+La lógica es más compleja o tiene múltiples condiciones.
+Hay varias acciones que se deben ejecutar dentro de cada rama.
+La claridad y la legibilidad son más importantes que la concisión.
+
+Operador ternario es útil cuando:
+Tienes una condición simple con dos posibilidades (es decir, una acción cuando la condición es verdadera y otra cuando es falsa).
+Buscas concisión y una sola línea de código para una asignación rápida o retorno.
+*/
+
+let edad = 12;
+let eresMayor = (edad >= 18) ? "Eres mayor de edad" : "Eres menor de edad";
+console.log(eresMayor);
+
 // ------------------------ ESTRUCTURA FOR ---------------------------------
 
 /**
@@ -424,11 +442,60 @@ Ejemplo básico de un objeto:
 let persona4 = {
     nombre: "Ana",
     saludar() {
-        //console.log("Hola, mi nombre es " + this.nombre);
+        console.log("Hola, mi nombre es " + this.nombre);
     }
 };
 
 persona4.saludar();  // "Hola, mi nombre es Ana"
+
+let user = {
+    "username": "Diego",
+    "score": 70.4,
+    "hours": 14,
+    "proffesional": true,
+    "friends": ['Andres', 'Carlos', 'Mauricio']
+};
+console.log(user);
+
+const objA = {clave:"valor"};
+console.log(objA);
+//Dentro de un objeto a las variables se les llama atributos/propieadaes y a las funciones se les llama metodos.
+//Ejemplo:
+//Declarando una constante que se le asigna el objeto datosPerson
+const datosPerson = {
+    //propiedad: valor
+    nombre: "Diego",
+    apellido: "Reina",
+    //Propiedad: Lista o arreglo de 2 elementos
+    pasatiempo: ["Cine", "Programar"],
+    //Propiedad: objeto anidado con los datos de contacto
+    contacto: {
+        telefono: "123456789",
+        correo: "diego@gmail.com"
+    },
+    //Define el metodo llamado saludando dentro del objeto datosPerson, Un método es una función que está asociada a un objeto. En este caso, el método saludando simplemente imprime "Hola:)" en la consola.
+    saludando: function () {//esto es un metodo
+        console.log(`Hola:)`)
+    },
+    //Define el metodo traerNombre que imprime un mensaje que incluye el nombre, apellido, pasatiempo y datos de contacto de la persona, La palabra clave this se utiliza para acceder a las propiedades del objeto dentro del método. 
+    traerNombre: function () {
+        console.log(`Hola, me llamo ${this.nombre} ${this.apellido} y me gusta ir a ${this.pasatiempo[0]} y ${this.pasatiempo[1]}, mis datos de contacto son: Numero celular ${this.contacto.telefono} y correo${this.contacto.correo}`);
+    }
+}
+
+console.log(datosPerson);//Imprime el objeto completo
+console.log(datosPerson.nombre);//imprime el valor de la propiedad nombre
+console.log(datosPerson.apellido);//imprime el valor de la propiedad apellido
+console.log(datosPerson.pasatiempo);//Imprime el valor de la propiedad pasatiempos del objeto datosPerson
+console.log(datosPerson.pasatiempo[0]);//Imprime el primer elemento del arreglo pasatiempo
+console.log(datosPerson.contacto.telefono);//Imprime el valor de la propiedad "telefono" del objeto contacto que esta dentro de datosPerson.
+datosPerson.saludando;//llama al método saludando del objeto datosPerson, lo que hace que se imprima "Hola:)" en la consola.
+datosPerson.traerNombre();// llama al método traerNombre del objeto datosPerson, lo que hace que se imprima el mensaje con la información de la persona en la consola.
+
+console.log(Object.keys(datosPerson));//utiliza el método Object.keys() para obtener un arreglo con los nombres de todas las propiedades (claves) del objeto datosPerson y lo imprime en la consola.
+console.log(Object.values(datosPerson));//utiliza el método Object.values() para obtener un arreglo con todos los valores de las propiedades del objeto 
+console.log(datosPerson.hasOwnProperty("nombre"));//utiliza el método hasOwnProperty() para verificar si el objeto datosPerson tiene una propiedad llamada "nombre". Como la tiene, imprime true en la consola.
+console.log(datosPerson.hasOwnProperty("nacimiento"));//utiliza hasOwnProperty() para verificar si el objeto datosPerson tiene una propiedad llamada "nacimiento". Como no la tiene, imprime false en la consola.
 
 // --------------------------------------------------------------------------------------------
 
