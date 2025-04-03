@@ -40,6 +40,3 @@ let cortarCaracteres = (cadena = "", longitud = undefined) =>
 cortarCaracteres("Diego Reina",12);
 
 
-// masculinos contiene ['Pedro','Miguel']
-
-//Ejercicio 3:Programa una funcion que dada una String devuelva un Array de textos separados por cierto caracter, ejemplo miFuncion('Hola mundo') devolvera ['Hola','mundo']. 
