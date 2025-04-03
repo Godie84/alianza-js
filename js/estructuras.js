@@ -455,7 +455,7 @@ let user = {
     "proffesional": true,
     "friends": ['Andres', 'Carlos', 'Mauricio']
 };
-console.log(user);
+console.log(user); 
 
 const objA = {clave:"valor"};
 console.log(objA);
