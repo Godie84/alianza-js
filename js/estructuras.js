@@ -38,6 +38,7 @@ var diasSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado",
 
 // => Ejercicio> Crear un array con los nombres de los meses del año y mostrar el nombre del mes de tu cumpleaños.
 
+
 // ---------------------------- Notacion de corchetes ---------------------------------------
 // Cadena = 5
 // Indice = 4
@@ -455,9 +456,9 @@ let user = {
     "proffesional": true,
     "friends": ['Andres', 'Carlos', 'Mauricio']
 };
-console.log(user); 
+console.log(user);
 
-const objA = {clave:"valor"};
+const objA = { clave: "valor" };
 console.log(objA);
 //Dentro de un objeto a las variables se les llama atributos/propieadaes y a las funciones se les llama metodos.
 //Ejemplo:
