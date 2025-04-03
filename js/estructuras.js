@@ -474,7 +474,7 @@ const datosPerson = {
         correo: "diego@gmail.com"
     },
     //Define el metodo llamado saludando dentro del objeto datosPerson, Un método es una función que está asociada a un objeto. En este caso, el método saludando simplemente imprime "Hola:)" en la consola.
-    saludando: function () {//esto es un metodo
+    saludando() {//esto es un metodo
         console.log(`Hola:)`)
     },
     //Define el metodo traerNombre que imprime un mensaje que incluye el nombre, apellido, pasatiempo y datos de contacto de la persona, La palabra clave this se utiliza para acceder a las propiedades del objeto dentro del método. 

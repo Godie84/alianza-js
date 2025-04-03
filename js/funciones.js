@@ -12,11 +12,11 @@
  Funcion Declarada:
 */
 function name(params) {//palabra reservada, nombre funcion, (parametros)
-    
+
 }
 
 function saludar() {
-   console.log("Hola, como estan?"); 
+    console.log("Hola, como estan?");
 }
 //Invocacion de la funcion
 saludar();
@@ -42,10 +42,11 @@ let valorFuncion = valorR();
 console.log(valorFuncion);
 
 //Funcion declarada
-funDeclare();
+
 function funDeclare() {
     console.log("Esto es una funcion declarada, puede invocarse en cualquier parte de nuestro código, incluso antes de que la funcion sea declarada.")
 }
+funDeclare();
 
 //Funcion expresada
 const funExpresada = function () {
@@ -77,7 +78,7 @@ function parImpar(numero) {
         return "no es valido";
     }
 
-    if (numero %2 == 0) {
+    if (numero % 2 == 0) {
         return "par";
     } else {
         return "impar";
@@ -155,10 +156,53 @@ function sumar(a, b) {
 
 // Arrow function equivalente
 const sumar1 = (a, b) => a + b;
-console.log(2,3)
+console.log(2, 3)
 // Con un solo parámetro (paréntesis opcionales)
 const duplicar = x => x * 2;
-console.log(5);
+console.log(10);
 // Sin parámetros (paréntesis requeridos)
 const saludar1 = () => "Hola mundo";
 console.log(saludar1());
+
+// Función tradicional
+function suma(a) {
+    return a + 100;
+}
+
+console.log(suma(5));
+
+// Desglose de la función flecha
+
+// 1. Elimina la palabra "function" y coloca la flecha entre el argumento y el corchete de apertura.
+(a) => {
+    return a + 100;
+}
+
+// 2. Quita los corchetes del cuerpo y la palabra "return" — el return está implícito.
+(a) => a + 100;
+
+// 3. Suprime los paréntesis de los argumentos
+a => a + 100;
+
+// Función tradicional
+function name (a, b){
+    return a + b + 100;
+  }
+  
+  // Función flecha
+  let miFuncion1 = (a, b) => a + b + 100;
+  console.log(miFuncion1(5,5));
+  
+  // Función tradicional (sin argumentos)
+  let a1 = 4;
+  let b1 = 2;
+  function nombre (){
+    return a1 + b1 + 100;
+  }
+  console.log(nombre());
+  
+  // Función flecha (sin argumentos)
+  let a = 4;
+  let b = 2;
+  let miFuncion = () => a + b + 100;
+  console.log(miFuncion())
