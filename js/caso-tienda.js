@@ -26,7 +26,7 @@ Estás construyendo una tienda en línea y necesitas representar la información
         precio: 1200,
         descripcion: "Laptop de alto rendimiento",
         stock: 10,
-        imagenes: ["./img/camiseta1.webp", "./img/camiseta2.webp"],
+        imagenes: ["./img/laptop1.webp", "./img/laptop1.webp"],
         mostrarDetalles () {
           console.log(`Nombre: ${this.nombre}, Precio: $${this.precio}, Descripción: ${this.descripcion}`);
         },
@@ -35,7 +35,7 @@ Estás construyendo una tienda en línea y necesitas representar la información
       console.log("Precio del producto: ", producto.precio);
       producto.stock--;
       console.log(producto.stock)
-      producto.imagenes.push("./img/camiseta3.webp");
+      producto.imagenes.push("./img/laptop3.webp");
       producto.mostrarDetalles();
       console.log(producto.imagenes)
       console.log(producto.hasOwnProperty("descuento"));

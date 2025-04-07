@@ -29,10 +29,10 @@ function saludo(persona) {
 saludo("Diego");
 saludo("Juan")
 
-function add(n1, n2) {
+function add(n1, n2) {//Parametros
     console.log(n1 + n2);
 }
-add(5, 300);
+add(5, 300);//Argumentos
 
 //Funcion que retorna valores
 function valorR() {

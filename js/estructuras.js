@@ -39,6 +39,21 @@ var diasSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado",
 // => Ejercicio> Crear un array con los nombres de los meses del año y mostrar el nombre del mes de tu cumpleaños.
 
 
+let arr = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", 3];
+let obj = {
+    //propiedad o clave: "valor"
+    username: "Diego",
+    score: 70.4,
+    hours: 14,
+    proffesional: true,
+    friends: ['Andres', 'Carlos', 'Mauricio'],
+    juegos: {
+        juego1: "CallOfDuty",
+        juego2: "Princes of percia"
+    }
+    
+};
+
 // ---------------------------- Notacion de corchetes ---------------------------------------
 // Cadena = 5
 // Indice = 4
@@ -498,7 +513,64 @@ console.log(Object.values(datosPerson));//utiliza el método Object.values() par
 console.log(datosPerson.hasOwnProperty("nombre"));//utiliza el método hasOwnProperty() para verificar si el objeto datosPerson tiene una propiedad llamada "nombre". Como la tiene, imprime true en la consola.
 console.log(datosPerson.hasOwnProperty("nacimiento"));//utiliza hasOwnProperty() para verificar si el objeto datosPerson tiene una propiedad llamada "nacimiento". Como no la tiene, imprime false en la consola.
 
+
+/**
+ * CONSTRUCTORES DE OBJETOS:
+ * Los constructores son funciones que nos permiten crear propiedades de objetos de una manera mas rapida y sencilla, se declaran con la primera letra en mayuscula y se invocan con la palabra reservada new.
+ * ¿Cómo funciona un constructor?
+Un constructor se define generalmente como una función que, cuando se invoca con la palabra clave new, crea un nuevo objeto con las propiedades y métodos definidos en esa función.
+
+Sintaxis de un Constructor:
+La forma más común de definir un constructor es usando una función que actúa como plantilla para crear objetos.
+ */
+
+let user1 = {
+    username: "Juana",
+    lastname: "Arco",
+    age: 30,
+    proffesional: true,
+    friends: ['Hugo', 'Paco', 'Luis']
+};
+
+//GENERADOR DE OBJETOS
+//Generar plantilla vacia para el objeto
+function Person(){
+    this.username = "";
+    this.lastname = "";
+    this.age = 0;
+    this.proffesional = true;
+    this.friends = [];
+    this.showPerson = function(){
+        console.log(`Hola, soy ${this.username} ${this.lastname}, tengo ${this.age}`);
+    }
+}
+
+//console.log(Person());
+
+const user2 = new Person(); // Crea un nuevo objeto usando el constructor Person
+user2.username = "Homero";
+user2.lastname = "Simpson";
+user2.age = 45;
+user2.proffesional = false;
+user2.friends = ["Moe", "Lisa", "Maggie"];
+this.showPerson = function(){
+    console.log(`Hola, soy ${this.username} ${this.lastname}, tengo ${this.age}`);
+}
+console.log(user2); // Muestra el objeto creado
+
+const user3 = new Person(); // Crea un nuevo objeto usando el constructor Person
+user3.username = "Maria";
+user3.lastname = "Baute";
+user3.age = 30;
+user3.proffesional = false;
+user3.friends = ["Hugo", "Paco", "Luis"];
+this.showPerson = function(){
+    console.log(`Hola, soy ${this.username} ${this.lastname}, tengo ${this.age}`);
+}
+console.log(user3); // Muestra el objeto creado
+
 // --------------------------------------------------------------------------------------------
+
 
 /**
  * for...in
