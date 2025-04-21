@@ -2,7 +2,7 @@
 // function add(x, y) {//declaracion de funcion tradicional
 //     return x + y;
 // }
-const add = (x, y) => x + y;//funcion adaptada en Arrow Function In Line
+// const add = (x, y) => x + y;//funcion adaptada en Arrow Function In Line
 // function multiplicar(x=0, y=0) {//Declaracion de funcion tradicional
 //     return x * y;
 // }
