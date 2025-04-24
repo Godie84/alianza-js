@@ -254,6 +254,46 @@ if ($_POST) {
 </form>
 
 <?php
+
+/******************************************
+ * EXPRESION MATCH *
+ * match es una expresión (no una función) que actúa como una evolución del clásico switch, pero más poderosa y segura:
+
+  - Devuelve un valor
+  - Evalúa con igualdad estricta (===)
+  - Es más clara y menos propensa a errores
+ *****************************************/
+
+ $resultado = match($variable) {
+    1 => "Uno",
+    2 => "Dos",
+    3 => "Tres",
+    default => "Otro número",
+ };
+ 
+ 
+ //Dias de la semana con match
+ 
+ $diaNumero = 4; 
+ 
+ //Compara el valor de la variable $diaNumero con una lista de casos y segun coincida, le asignare el valor correspondiente a la variable $diaNombre
+ $diaNombre = match ($diaNumero) {
+     1 => "Lunes",
+     2 => "Martes",
+     3 => "Miércoles",
+     4 => "Jueves",
+     5 => "Viernes",
+     6 => "Sábado",
+     7 => "Domingo",
+     default => "Número de día inválido"
+ };
+ 
+ echo "Día $diaNumero: $diaNombre";
+ //El valor de $diaNumero se compara contra los casos definidos en match
+ //Si coincide con 1 al 7, devuelve el nombre del día correspondiente
+ //Si no coincide (por ejemplo, si es 0 o 8), devuelve "Número de día inválido" usando default
+ 
+
 /***************************************************
  * BUCLES WHILE, DO WHILE, FOR, FOREACH *
  *****************************************************/
