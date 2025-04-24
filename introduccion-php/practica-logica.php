@@ -73,11 +73,38 @@ echo "Hay $contador multimos de 3 entre 1 y 100";
  * Pedir 10 números (uno por uno) y al final mostrar cuántos eran positivos, cuántos negativos y cuántos eran cero.
  * 
  * Paso2: 
- * - Entrada:
- * - Proceso:
- * - Salida:
+ * - Entrada: variables positivo, negativo, ceros
+ * - Proceso: Usar un bucle que se repita 10 veces, en cada iteracion verificar si el numero es mayor que 0, menor que 0 o igual que 0, aumenta el contador
+ * 
+ * - Salida:Mostrar positivos, negativos y ceros.
  * 
  * Paso3: Logica.
+ * - variable numero que sera la entrada
+ * - inicializar el contador en 0.
+ * - recorre de 1 a 10
+ * Si numero es < 0 -> negativo -> negativo++
+ * Si numero > 0 -> positivo -> positivo++
+ * Si numero == 0 -> cero
  
 */
 
+$positivos = 0;
+$negativos = 0;
+$ceros = 0;
+
+for ($i = 1; $i <= 10; $i++) {
+    $numero = rand(-10, 10);
+    echo "Numero $i: $numero<br>";
+
+    if ($numero > 0) {
+        $positivos++;
+    } elseif ($numero < 0) {
+        $negativos++;
+    } else {
+        $ceros++;
+    }
+}
+
+echo "<br>Total positivos $positivos<br>";
+echo "<br>Total negativos $negativos<br>";
+echo "<br>Total ceros $ceros<br>";
