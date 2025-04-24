@@ -92,8 +92,8 @@ $positivos = 0;
 $negativos = 0;
 $ceros = 0;
 
-for ($i = 1; $i <= 10; $i++) {
-    $numero = rand(-10, 10);
+for ($i = 1; $i <= 10; $i++) {//Se usa un bucle for para repetir el bloque de codigo exactamente 10 veces, En cada vuelta (iteración), representa como si el usuario estuviera ingresando un número nuevo.
+    $numero = rand(-10, 10);//rand() se usa para simular el ingreso de números. En este caso:Genera un número aleatorio entre -10 y 10.
     echo "Numero $i: $numero<br>";
 
     if ($numero > 0) {
