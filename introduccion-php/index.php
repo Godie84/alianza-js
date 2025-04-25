@@ -474,3 +474,53 @@ echo "Longitud del nombre: $longitudNombre <br>"; //Imprime la longitud del nomb
 //Funcion date de la hora actual
 $fechaActual = date("d/m/Y H:i:s"); //Obtiene la fecha y hora actual
 echo "Fecha y hora actual: $fechaActual <br>"; //Imprime la fecha y hora actual
+
+//echo dirname("/var/www/html/index.php"); 
+
+//C:\Users\diego\Escritorio\PROYECTO-WEB\programa-alianza\alianza-js\introduccion-php\formulario_get.html
+
+//introduccion-php\formulario_get.html
+echo "<br>";
+echo dirname("C:/Users/diego/Escritorio/PROYECTO-WEB/programa-alianza/alianza-js/introduccion-php/lista_usuarios.php");
+echo "<br>";
+$password = "aá";
+
+if (strlen($password) < 3) {
+    echo "La contraseña es demasiado corta";
+} else {
+    echo "Contraseña válida";
+}
+
+//Tipado fuerte de parámetros y retorno
+
+function saludar1(string $nombre): string
+{
+    return "Hola, $nombre";
+}
+
+echo saludar1("Sandra"); // Resultado: Hola, Diego
+
+echo "<br>";
+
+//enum
+/**
+ * Los enum (enumeraciones) fueron introducidos en PHP 8.1, y permiten definir un conjunto fijo de valores posibles para una variable. Son especialmente útiles cuando quieres restringir los valores a un grupo específico (por ejemplo, días de la semana, estados de pedido, roles de usuario, etc.).
+ */
+
+ enum RolUsuario {
+    case Admin;
+    case Editor;
+    case Lector;
+}
+
+// Usamos el enum
+function saludarPorRol(RolUsuario $rol): string {
+    return match($rol) {
+        RolUsuario::Admin => 'Hola, administrador',
+        RolUsuario::Editor => 'Hola, editor',
+        RolUsuario::Lector => 'Hola, lector',
+    };
+}
+
+// Llamamos la función
+echo saludarPorRol(RolUsuario::Admin);

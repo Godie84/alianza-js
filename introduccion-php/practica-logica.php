@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 //La lógica es independiente del lenguaje. Todos los lenguajes (PHP, Python, JavaScript...) siguen las mismas estructuras:
 
 /**
@@ -92,8 +95,8 @@ $positivos = 0;
 $negativos = 0;
 $ceros = 0;
 
-for ($i = 1; $i <= 10; $i++) {//Se usa un bucle for para repetir el bloque de codigo exactamente 10 veces, En cada vuelta (iteración), representa como si el usuario estuviera ingresando un número nuevo.
-    $numero = rand(-10, 10);//rand() se usa para simular el ingreso de números. En este caso:Genera un número aleatorio entre -10 y 10.
+for ($i = 1; $i <= 10; $i++) { //Se usa un bucle for para repetir el bloque de codigo exactamente 10 veces, En cada vuelta (iteración), representa como si el usuario estuviera ingresando un número nuevo.
+    $numero = rand(-10, 10); //rand() se usa para simular el ingreso de números. En este caso:Genera un número aleatorio entre -10 y 10.
     echo "Numero $i: $numero<br>";
 
     if ($numero > 0) {
@@ -108,3 +111,32 @@ for ($i = 1; $i <= 10; $i++) {//Se usa un bucle for para repetir el bloque de co
 echo "<br>Total positivos $positivos<br>";
 echo "<br>Total negativos $negativos<br>";
 echo "<br>Total ceros $ceros<br>";
+
+echo "<br>";
+
+
+//Dado un numero entero positivo calcular su factorial
+//El factorial de 5 es 5x4x3x2x1 = 120
+
+/**
+ * Paso2:
+ * - Entrada: n
+ * - Proceso: multiplicar los numeros  desde el 1 hasta ese numero
+ * - Salida: El resultado final.
+ * 
+ * Paso3:
+ * 1. Leer n
+ * 2. Crear una variable $factorial y ponerla en 1
+ * 3. Hacer un blucle de 1 hasta n
+ * 4. Multiplicar el factorial por cada numero del bucle
+ * 5. Mostrar el resultado
+ */
+
+ $n = 5;
+ $factorial = 1;
+
+ for ($i=1; $i <= $n; $i++) { 
+    $factorial = $factorial * $i;
+ }
+ echo "El factorial de $n es: $factorial";
+
