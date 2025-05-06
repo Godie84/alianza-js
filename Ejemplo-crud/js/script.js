@@ -24,3 +24,77 @@ document.getElementById('registroModal').addEventListener('hidden.bs.modal', fun
     boton.innerText = "Registrar";
     boton.value = "Registrar";
 });
+
+//Codigo para generar las alertas con SweetAlert
+document.querySelectorAll('.form-eliminar').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Detiene el envío del formulario
+
+        //console.log("Formulario está a punto de ser enviado"); // Verifica en la consola
+
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "¡Esta acción no se puede deshacer!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //console.log("Formulario enviado"); // Esto se debería ver en la consola si se confirma
+                form.submit(); // Si el usuario confirma, se envía el formulario
+            }
+        });
+    });
+});
+
+const urlParams = new URLSearchParams(window.location.search);
+
+// Confirmación de registro
+if (urlParams.get('mensaje') === 'registrado') {
+    Swal.fire({
+        title: "¡Registrado!",
+        text: "El libro se ha registrado exitosamente.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2000
+    });
+
+    // Limpia el parámetro de la URL sin recargar
+    window.history.replaceState(null, null, window.location.pathname);
+}
+
+// Confirmación de edición
+if (urlParams.get('mensaje') === 'actualizado') {
+    Swal.fire({
+        title: "¡Actualizado!",
+        text: "El libro se ha actualizado exitosamente.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2000
+    });
+
+    // Limpia el parámetro de la URL sin recargar
+    window.history.replaceState(null, null, window.location.pathname);
+}
+
+// Confirmación de eliminación
+if (urlParams.get('mensaje') === 'eliminado') {
+    Swal.fire({
+        title: "¡Eliminado!",
+        text: "El registro ha sido eliminado exitosamente.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2000
+    });
+
+    // Limpia el parámetro de la URL sin recargar
+    window.history.replaceState(null, null, window.location.pathname);
+}
+
+
+
+
+
