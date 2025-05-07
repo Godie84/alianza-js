@@ -20,7 +20,7 @@ require_once 'cabecera.php';
                 <div class="card-body text-center">
                     <h2 class="card-title mb-4">¡Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?>!. Su email es: <?php echo htmlspecialchars($emailUsuario); ?></h2>
                     <p class="lead">Has iniciado sesión exitosamente.</p>
-                    <a href="cerrar_sesion.php" class="btn btn-danger mt-3">Cerrar Sesión</a>
+                    <a href="cerrar_session.php" class="btn btn-danger mt-3">Cerrar Sesión</a>
                 </div>
             </div>
         </div>

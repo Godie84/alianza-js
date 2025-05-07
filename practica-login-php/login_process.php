@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Si no hay errores de validación
     if (!isset($error)) {
         // Consultar la base de datos para obtener el usuario con el email ingresado
-        $stmt = $conexion->prepare("SELECT id, username, password FROM usuarios WHERE email = :email");
+        $stmt = $conexion->prepare("SELECT id, username, email, password FROM usuarios WHERE email = :email");
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
