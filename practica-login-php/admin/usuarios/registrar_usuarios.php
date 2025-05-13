@@ -1,6 +1,6 @@
 <?php
-require_once 'conexion.php';
-require_once 'funciones.php';
+require_once __DIR__ . '/init.php';
+require_once __DIR__ . '/conexion.php'; // si aún no lo mueves también a init
 
 //Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,6 +8,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = limpiarDatos($_POST["nombre"]);
     $email = limpiarDatos($_POST["email"]);
     $password = $_POST["password"]; //No limpiar la contrasena inicialmente
+    
+    // Validar y limpiar el rol
+    $rol = isset($_POST["rol_id"]) ? (int)$_POST["rol_id"] : 3; // Por defecto 'Usuario'
+
+    if (!in_array($rol, [1, 2, 3])) {
+        $error = "Rol inválido.";
+    }
 
     // Validaciones básicas
     if (empty($nombre)) { //valida campos vacios
@@ -34,13 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //Hashear la contraseña de forma segura
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             //Inserta los datos en la base de datos para el nuevo usuario
-            $stmt = $conexion->prepare("INSERT INTO usuarios (username, email, password) VALUES (:nombre, :email, :password)");
+            $stmt = $conexion->prepare("INSERT INTO usuarios (username, email, password, role_id) 
+                            VALUES (:nombre, :email, :password, :rol)");
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $hashedPassword);
+            $stmt->bindParam(':rol', $rol);
 
             if ($stmt->execute()) {
                 $mensaje = "Resgistro exitoso.";
+                
             } else {
                 $error = "Error al registrar el usaurio.";
             }

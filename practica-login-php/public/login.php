@@ -1,7 +1,8 @@
 <?php
-require_once 'cabecera.php';
+require_once __DIR__ . '/../includes/cabecera.php';
+
 ?>
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm">
@@ -33,4 +34,4 @@ require_once 'cabecera.php';
         </div>
     </div>
 </div>
-<?php require_once 'footer.php'; ?>
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

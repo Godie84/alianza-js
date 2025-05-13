@@ -1,5 +1,6 @@
 <?php
-require_once 'cabecera.php';
+require_once __DIR__ . '/cabecera.php';
+
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -19,6 +20,15 @@ require_once 'cabecera.php';
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña:</label>
                             <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role_id" class="form-label">Rol:</label>
+                            <select class="form-select form-select-sm" id="role_id" name="role_id" required>
+                                <option value="">Seleccione un rol</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Editor</option>
+                                <option value="3">Usuario</option>
+                            </select>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Registrarse</button>

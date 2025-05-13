@@ -1,0 +1,22 @@
+body {
+    background: #f8f9fa;
+  }
+  .hero {
+    height: 100vh;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3rem;
+  }
+  .btn-primary {
+    background-color: #343a40;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #212529;
+  }
