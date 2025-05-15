@@ -1,11 +1,17 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../vendor/autoload.php'; // Autocargador de Composer
+require_once __DIR__ . '/../src/Services/MailService.php'; // Incluir el servicio de correo
+
+use App\Services\MailService;
 
 class User {
     private $db;
+    private $mailService;
 
     public function __construct() {
         $this->db = Database::connect();
+        $this->mailService = new MailService(); // Instanciar el servicio de correo
     }
 
     public function search($query) {
@@ -22,20 +28,22 @@ class User {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     public function countAll() {
         $stmt = $this->db->query("SELECT COUNT(*) FROM users");
         return $stmt->fetchColumn();
     }
 
-    // public function getAll() {
-    //     $stmt = $this->db->query("SELECT * FROM users");
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
     public function create($name, $email, $pass) {
         $stmt = $this->db->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-        return $stmt->execute([$name, $email, $pass]);
+        $result = $stmt->execute([$name, $email, $pass]);
+
+        if ($result) {
+            // Enviar correo de bienvenida después del registro exitoso
+            $this->mailService->enviarCorreoBienvenida($email, $name);
+        }
+
+        return $result;
     }
 
     public function find($id) {
@@ -43,14 +51,21 @@ class User {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     public function update($id, $name, $email) {
         $stmt = $this->db->prepare("UPDATE users SET name = ?, email = ? WHERE id = ?");
         return $stmt->execute([$name, $email, $id]);
     }
-    
+
     public function delete($id) {
         $stmt = $this->db->prepare("DELETE FROM users WHERE id = ?");
         return $stmt->execute([$id]);
+    }
+
+    public function findByEmail($email)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

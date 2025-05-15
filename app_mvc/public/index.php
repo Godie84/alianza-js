@@ -5,6 +5,7 @@ $action = $_GET['action'] ?? 'index';
 $controllerClass = ucfirst($controller) . "Controller";
 $controllerFile = __DIR__ . "/../controllers/{$controllerClass}.php";
 
+
 if (!file_exists($controllerFile)) {
     die("Error: El controlador '$controllerClass' no existe.");
 }
@@ -16,6 +17,8 @@ if (!class_exists($controllerClass)) {
 }
 
 $controllerInstance = new $controllerClass();
+
+echo "Buscando el archivo del controlador: $controllerFile"; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_GET['id'])) {

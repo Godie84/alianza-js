@@ -1,7 +1,7 @@
 <?php require_once __DIR__ . '/../layout/header.php'; ?>
 <!-- Opcion de busqueda -->
 <form method="GET" action="index.php" class="mb-3 row g-2">
-    <input type="hidden" name="controller" value="user">
+    <input type="hidden" name="controller" value="city">
     <input type="hidden" name="action" value="index">
 
     <div class="col-auto">
@@ -13,38 +13,36 @@
 </form>
 
 
-<h2>Listado de usuarios</h2>
-<a href="index.php?controller=user&action=create" class="btn btn-success mb-2">Nuevo usuario</a>
+<h2>Listado de ciudades</h2>
+<a href="index.php?controller=city&action=create" class="btn btn-success mb-2">Nueva ciudad</a>
 
 <!-- <?php if (isset($_GET['success'])): ?>
     <div class="alert alert-success">Usuario registrado correctamente.</div>
 <?php endif; ?> -->
 
 <?php if (isset($_GET['success'])): ?>
-    <div class="alert alert-success">Usuario registrado correctamente.</div>
+    <div class="alert alert-success">Ciudad registrada correctamente.</div>
 <?php elseif (isset($_GET['updated'])): ?>
-    <div class="alert alert-success">Usuario actualizado.</div>
+    <div class="alert alert-success">Ciudad actualizada.</div>
 <?php elseif (isset($_GET['deleted'])): ?>
-    <div class="alert alert-success">Usuario eliminado.</div>
+    <div class="alert alert-success">Ciudad eliminado.</div>
 <?php endif; ?>
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Email</th>
+            <th>Ciudad</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($users as $user): ?>
+        <?php foreach ($citys as $city): ?>
             <tr>
-                <td><?= htmlspecialchars($user['name']) ?></td>
-                <td><?= htmlspecialchars($user['email']) ?></td>
+                <td><?= htmlspecialchars($city['city']) ?></td>
                 <td>
-                    <a href="index.php?controller=user&action=edit&id=<?= $user['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="index.php?controller=user&action=delete&id=<?= $user['id'] ?>"
+                    <a href="index.php?controller=city&action=edit&id=<?= $city['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="index.php?controller=city&action=delete&id=<?= $city['id'] ?>"
                         class="btn btn-danger btn-sm"
-                        onclick="return confirm('¿Estás seguro de eliminar este usuario?')">
+                        onclick="return confirm('¿Estás seguro de eliminar esta ciudad?')">
                         Eliminar
                     </a>
                 </td>
@@ -59,19 +57,19 @@
         <ul class="pagination">
             <?php if ($page > 1): ?>
                 <li class="page-item">
-                    <a class="page-link" href="?controller=user&action=index&page=<?= $page - 1 ?>&q=<?= $search ?>">Anterior</a>
+                    <a class="page-link" href="?controller=city&action=index&page=<?= $page - 1 ?>&q=<?= $search ?>">Anterior</a>
                 </li>
             <?php endif; ?>
 
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                    <a class="page-link" href="?controller=user&action=index&page=<?= $i ?>&q=<?= $search ?>"><?= $i ?></a>
+                    <a class="page-link" href="?controller=city&action=index&page=<?= $i ?>&q=<?= $search ?>"><?= $i ?></a>
                 </li>
             <?php endfor; ?>
 
             <?php if ($page < $totalPages): ?>
                 <li class="page-item">
-                    <a class="page-link" href="?controller=user&action=index&page=<?= $page + 1 ?>&q=<?= $search ?>">Siguiente</a>
+                    <a class="page-link" href="?controller=city&action=index&page=<?= $page + 1 ?>&q=<?= $search ?>">Siguiente</a>
                 </li>
             <?php endif; ?>
         </ul>
