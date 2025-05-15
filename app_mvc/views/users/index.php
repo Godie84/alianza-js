@@ -14,7 +14,18 @@
 
 
 <h2>Listado de usuarios</h2>
-<a href="index.php?controller=user&action=create" class="btn btn-success mb-2">Nuevo usuario</a>
+<!-- Boton nuevo usuario -->
+<a href="index.php?controller=user&action=create" class="btn btn-success mb-2">
+    <i class="fas fa-user-plus"></i> Nuevo usuario
+</a>
+<!-- Boton exportar a excel -->
+<a href="index.php?controller=user&action=exportarExcel" class="btn btn-success mb-2">
+    <i class="fas fa-file-excel"></i> Exportar a Excel
+</a>
+<!-- Boton exportar a pdf -->
+<a href="index.php?controller=user&action=exportarPDF" class="btn btn-danger mb-2" target="_blank">
+    <i class="fas fa-file-pdf"></i> Exportar a PDF
+</a>
 
 <!-- <?php if (isset($_GET['success'])): ?>
     <div class="alert alert-success">Usuario registrado correctamente.</div>

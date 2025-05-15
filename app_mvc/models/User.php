@@ -68,4 +68,16 @@ class User {
         $stmt->execute([$email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    // Método para exportar usuarios
+    public function export()
+    {
+        $sql = "SELECT id, name, email FROM users";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Devuelve un array de arrays asociativos
+    }
+
+
 }
