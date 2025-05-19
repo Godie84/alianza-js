@@ -16,7 +16,8 @@ class MailService {
 
     public function enviarCorreoBienvenida(string $destinatario, string $nombre) {
         $mail = new PHPMailer(true);
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->SMTPDebug = 0;
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
         try {
             // Configuración del servidor SMTP desde el archivo de configuración
@@ -35,8 +36,8 @@ class MailService {
             // Contenido del correo
             $mail->isHTML(true);
             $mail->Subject = '¡Bienvenido a nuestra plataforma!';
-            $mail->Body    = 'Hola ' . htmlspecialchars($nombre) . ',<br><br>Gracias por registrarte en nuestra plataforma. ¡Esperamos que disfrutes de nuestros servicios!';
-            $mail->AltBody = 'Hola ' . $nombre . ', Gracias por registrarte en nuestra plataforma.';
+            $mail->Body    = 'Hola ' . htmlspecialchars($nombre) . ',<br><br>Gracias por registrarte en nuestra plataforma. ¡Esperamos que disfrutes de nuestros servicios!';// Contenido HTML del correo
+            $mail->AltBody = 'Hola ' . $nombre . ', Gracias por registrarte en nuestra plataforma.';// Texto alternativo para clientes de correo que no soportan HTML
 
             $mail->send();
             return true; // Éxito al enviar

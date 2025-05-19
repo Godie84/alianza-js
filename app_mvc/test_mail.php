@@ -6,8 +6,8 @@ require_once __DIR__ . '/src/Services/MailService.php';
 use App\Services\MailService;
 
 $mailService = new MailService();
-$destinatario = 'godiequeen@gmail.com'; // Reemplaza con una dirección de correo real
-$nombre = 'Diego Reina';
+$destinatario = 'diego.reina1984@gmail.com'; // Reemplaza con una dirección de correo real
+$nombre = 'Fernando Ramirez';
 
 if ($mailService->enviarCorreoBienvenida($destinatario, $nombre)) {
     echo "Correo de prueba enviado correctamente a {$destinatario}\n";
