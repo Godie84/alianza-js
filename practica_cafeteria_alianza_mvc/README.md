@@ -12,7 +12,7 @@ La aplicación permite:
 - [Administrar el catálogo](#1-gestión-de-productos)de productos disponibles.
 - [Generar reportes](#3-reportes) de ventas por día y por producto.
 - Gestionar usuarios con roles definidos (administrador y vendedor).
-- [Recuperacion de contraseña](#4-recuperación-de-contraseña) de ventas por día y por producto.
+- [Recuperacion de contraseña](#4-recuperación-de-contraseña)
 
 ---
 
