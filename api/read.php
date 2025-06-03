@@ -2,14 +2,25 @@
 require 'db.php';
 
 header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json; charset=UTF-8');
+header('Content-Type: text/html; charset=UTF-8');
 
 try {
     $stmt = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
     $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($posts);
+
+    if (empty($posts)) {
+        echo "<p>No hay posts disponibles.</p>";
+    } else {
+        foreach ($posts as $post) {
+            echo "<div class='mb-3 p-3 border rounded'>";
+            echo "<h5>" . htmlspecialchars($post['title']) . "</h5>";
+            echo "<p>" . nl2br(htmlspecialchars($post['body'])) . "</p>";
+            echo "<small><strong>ID:</strong> " . $post['id'] . " | <strong>Usuario:</strong> " . $post['userId'] . "</small>";
+            echo "</div>";
+        }
+    }
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Error al obtener los posts: ' . $e->getMessage()]);
+    echo "Error al obtener los posts: " . $e->getMessage();
 }
 ?>

@@ -2,17 +2,17 @@
 require 'db.php';
 
 header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json; charset=UTF-8');
+header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(['error' => 'Método no permitido']);
+    echo "Método no permitido";
     exit;
 }
 
 if (!isset($_POST['id'], $_POST['title'], $_POST['body'], $_POST['userId'])) {
     http_response_code(400);
-    echo json_encode(['error' => 'Faltan campos requeridos']);
+    echo "Faltan datos requeridos";
     exit;
 }
 
@@ -29,9 +29,10 @@ try {
         'body' => $body,
         'userId' => $userId
     ]);
-    echo json_encode(['message' => 'Post actualizado exitosamente']);
+
+    echo "Post actualizado exitosamente";
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Error en el servidor: ' . $e->getMessage()]);
+    echo "Error del servidor: " . $e->getMessage();
 }
 ?>

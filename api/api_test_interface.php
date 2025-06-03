@@ -1,23 +1,27 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CRUD API Test Interface</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
     <div class="container mt-5">
         <h1 class="text-center mb-4">CRUD API Test Interface</h1>
 
-        <!-- Crear nuevo post -->
+        <!-- Formulario para crear un nuevo post -->
         <div class="card mb-4">
             <div class="card-header">Crear Nuevo Post</div>
             <div class="card-body">
-                <form id="createForm">
+                <form id="createForm" action="create.php" method="POST">
                     <div class="mb-3">
                         <label for="createTitle" class="form-label">Título</label>
                         <input type="text" class="form-control" id="createTitle" name="title" required>
@@ -35,11 +39,11 @@
             </div>
         </div>
 
-        <!-- Actualizar post -->
+        <!-- Formulario para actualizar un post -->
         <div class="card mb-4">
             <div class="card-header">Actualizar Post</div>
             <div class="card-body">
-                <form id="updateForm">
+                <form id="updateForm" action="update.php" method="POST">
                     <div class="mb-3">
                         <label for="updateId" class="form-label">ID del Post</label>
                         <input type="number" class="form-control" id="updateId" name="id" required>
@@ -61,11 +65,11 @@
             </div>
         </div>
 
-        <!-- Eliminar post -->
+        <!-- Formulario para eliminar un post -->
         <div class="card mb-4">
             <div class="card-header">Eliminar Post</div>
             <div class="card-body">
-                <form id="deleteForm">
+                <form id="deleteForm" action="delete.php" method="POST">
                     <div class="mb-3">
                         <label for="deleteId" class="form-label">ID del Post</label>
                         <input type="number" class="form-control" id="deleteId" name="id" required>
@@ -75,7 +79,7 @@
             </div>
         </div>
 
-        <!-- Mostrar posts -->
+        <!-- Mostrar todos los posts -->
         <div class="card mb-4">
             <div class="card-header">Ver Todos los Posts</div>
             <div class="card-body">
@@ -86,76 +90,37 @@
     </div>
 
     <script>
-        const API_BASE = ''; // Puedes usar 'http://localhost/api/' si tu API está en una subcarpeta
-
-        // Crear post
-        document.getElementById('createForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-
-            const response = await fetch(API_BASE + 'create.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            const result = await response.json();
-            alert(result.message || result.error);
-            this.reset();
-        });
-
-        // Actualizar post
-        document.getElementById('updateForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-
-            const response = await fetch(API_BASE + 'update.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            const result = await response.json();
-            alert(result.message || result.error);
-        });
-
-        // Eliminar post
-        document.getElementById('deleteForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-
-            const response = await fetch(API_BASE + 'delete.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            const result = await response.json();
-            alert(result.message || result.error);
-        });
-
-        // Ver posts
-        document.getElementById('viewPostsBtn').addEventListener('click', async function () {
-            const container = document.getElementById('postsContainer');
-            container.innerHTML = 'Cargando...';
-
-            const response = await fetch(API_BASE + 'read.php');
-            const posts = await response.json();
-
-            if (!Array.isArray(posts)) {
-                container.innerHTML = '<p class="text-danger">Error al cargar los posts.</p>';
-                return;
+        // Validaciones JavaScript
+        document.getElementById('createForm').addEventListener('submit', function(event) {
+            if (!document.getElementById('createTitle').value || !document.getElementById('createBody').value || !document.getElementById('createUserId').value) {
+                alert('Por favor, completa todos los campos.');
+                event.preventDefault();
             }
+        });
 
-            if (posts.length === 0) {
-                container.innerHTML = '<p>No hay posts disponibles.</p>';
-                return;
+        document.getElementById('updateForm').addEventListener('submit', function(event) {
+            if (!document.getElementById('updateId').value || !document.getElementById('updateTitle').value || !document.getElementById('updateBody').value || !document.getElementById('updateUserId').value) {
+                alert('Por favor, completa todos los campos.');
+                event.preventDefault();
             }
+        });
 
-            container.innerHTML = posts.map(post => `
-                <div class="mb-3 p-3 border rounded">
-                    <h5>${post.title}</h5>
-                    <p>${post.body.replace(/\n/g, "<br>")}</p>
-                    <small><strong>ID:</strong> ${post.id} | <strong>Usuario:</strong> ${post.userId}</small>
-                </div>
-            `).join('');
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            if (!document.getElementById('deleteId').value) {
+                alert('Por favor, completa todos los campos.');
+                event.preventDefault();
+            }
+        });
+
+        // Mostrar todos los posts
+        document.getElementById('viewPostsBtn').addEventListener('click', function() {
+            $.ajax({
+                url: 'read.php',
+                method: 'GET',
+                success: function(data) {
+                    $('#postsContainer').html(data);
+                }
+            });
         });
     </script>
 </body>
